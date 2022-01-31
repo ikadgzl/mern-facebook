@@ -38,6 +38,11 @@ const UserSchema = new mongoose.Schema(
       default: []
     },
 
+    followings: {
+      type: Array,
+      default: []
+    },
+
     profilePicture: {
       type: Array,
       default: []
