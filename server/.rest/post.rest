@@ -12,16 +12,16 @@ GET http://localhost:4000/api/posts/
 
 ###
 
-GET http://localhost:4000/api/posts/61f7fa7c6346bd7d1a1547a2
+GET http://localhost:4000/api/posts/61f7fac2fcc17102731327d3
 
 ###
 
-PUT http://localhost:4000/api/posts/61f7fa7c6346bd7d1a1547a2
+PUT http://localhost:4000/api/posts/61f7fac2fcc17102731327d3
 Content-Type: application/json
 
 {
-  "userId": "notfound",
-  "desc": "tryingto@gmail.com",
+  "userId": "askdmqwkd",
+  "desc": "tryiddeditedngto@gmail.com",
   "img": "thisisimg.png"
 }
 
@@ -34,4 +34,15 @@ Content-Type: application/json
   "userId": "notfound",
   "desc": "tryingto@gmail.com",
   "img": "thisisimg.png"
+}
+
+
+
+###
+
+PUT http://localhost:4000/api/posts/61f7fac2fcc17102731327d3/like
+Content-Type: application/json
+
+{
+    "userId": "askdmqwkd"
 }

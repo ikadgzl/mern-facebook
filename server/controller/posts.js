@@ -42,7 +42,7 @@ export const updatePost = async (req, res) => {
       return res.status(403).json({ msg: "You can NOT edit other's post" });
     }
 
-    await Post.findByIdAndUpdate(req.params.id, req.body);
+    await post.updateOne({ $set: req.body });
 
     res.status(200).json({ msg: 'Post successfully updated' });
   } catch (error) {
@@ -60,9 +60,27 @@ export const deletePost = async (req, res) => {
       return res.status(403).json({ msg: "You can NOT delete other's post" });
     }
 
-    await Post.findByIdAndDelete(req.params.id);
+    await post.updateOne({ $set: req.body });
 
     res.status(200).json({ msg: 'Post successfully deleted' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+export const likePost = async (req, res) => {
+  try {
+    const post = await Post.findById({ _id: req.params.id });
+
+    if (post.likes.includes(req.body.userId)) {
+      await post.updateOne({ $pull: { likes: req.body.userId } });
+
+      res.status(200).json({ msg: 'Post has been disliked' });
+    } else {
+      await post.updateOne({ $push: { likes: req.body.userId } });
+
+      res.status(200).json({ msg: 'Post has been liked' });
+    }
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
