@@ -6,6 +6,7 @@ import mongoose from 'mongoose';
 
 import userRouter from './routes/users.js';
 import authRouter from './routes/auth.js';
+import postsRouter from './routes/posts.js';
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(morgan('common'));
 
 // routes
 app.use('/api/users', userRouter);
+app.use('/api/posts', postsRouter);
 app.use('/api/auth', authRouter);
 
 const PORT = process.env.PORT || 4000;
