@@ -46,3 +46,12 @@ Content-Type: application/json
 {
     "userId": "askdmqwkd"
 }
+
+###
+
+GET http://localhost:4000/api/posts/timeline/all
+Content-Type: application/json
+
+{
+    "userId": "61f79c4cc388e4c85507375c"
+}

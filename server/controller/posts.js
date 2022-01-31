@@ -1,4 +1,5 @@
 import Post from '../models/Post.js';
+import User from '../models/User.js';
 
 export const createPost = async (req, res) => {
   try {
@@ -81,6 +82,22 @@ export const likePost = async (req, res) => {
 
       res.status(200).json({ msg: 'Post has been liked' });
     }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+export const getTimeline = async (req, res) => {
+  try {
+    const currentUser = await User.findById(req.body.userId);
+    const currentUserPosts = await Post.find({ userId: currentUser._id });
+    const friendPosts = await Promise.all(
+      currentUser.followings.map((friendId) => Post.find({ userId: friendId }))
+    );
+
+    const timeline = currentUserPosts.concat(...friendPosts);
+
+    res.status(200).json({ msg: 'Timeline fetched successfully', timeline });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
