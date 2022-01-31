@@ -1,0 +1,26 @@
+GET  http://localhost:4000/api/users/
+
+###
+
+GET  http://localhost:4000/api/users/61f4c98591615391c7be68e6
+
+###
+
+PUT  http://localhost:4000/api/users/61f4c98591615391c7be68e6
+Content-Type: application/json
+
+{
+  "userId":"61f4c98591615391c7be68e6",
+  "username": "ilkerkaanadiguzel",
+  "password": "mahmudinyo"
+}
+
+
+###
+DELETE  http://localhost:4000/api/users/61f7956e381541324f5522e3
+Content-Type: application/json
+
+{
+  "userId":"61f7956e381541324f5522e3"
+}
+

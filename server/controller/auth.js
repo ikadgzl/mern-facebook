@@ -14,12 +14,11 @@ export const registerUser = async (req, res, next) => {
       password: hashedPassword
     });
 
-    const user = await newUser.save();
+    await newUser.save();
 
     res.status(200).json({ msg: 'User created.' });
   } catch (error) {
-    res.status(500).json({ msg: 'Error' });
-    console.log(error);
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -28,8 +27,6 @@ export const loginUser = async (req, res, next) => {
 
   try {
     const user = await User.findOne({ email });
-
-    console.log(user);
 
     if (!user) {
       return res.status(404).json({ msg: 'User not found' });
@@ -43,8 +40,6 @@ export const loginUser = async (req, res, next) => {
 
     res.status(200).json({ msg: 'Connection successful' });
   } catch (error) {
-    res.status(500).json({ msg: 'Error' });
-    console.log(error);
+    res.status(500).json({ error: error.message });
   }
-  const user = await User.findOne({ email });
 };
