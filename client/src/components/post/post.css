@@ -21,6 +21,7 @@
 }
 
 .postProfileImg {
+  cursor: pointer;
   height: 48px;
   width: 48px;
   object-fit: cover;
@@ -28,6 +29,7 @@
 }
 
 .postUsername {
+  cursor: pointer;
   font-weight: 500;
   margin: 0 16px;
 }
