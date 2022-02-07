@@ -1,5 +1,7 @@
 import './rightbar.css';
 
+import { users } from '../../dummyData';
+
 const Rightbar = () => {
   return (
     <div className='rightbar'>
@@ -15,57 +17,20 @@ const Rightbar = () => {
         <h4 className='rightbarTitle'>Online Friends</h4>
 
         <ul className='rightbarFriendList'>
-          <li className='rightbarFriend'>
-            <div className='rightbarProfileImgContainer'>
-              <img
-                className='rightbarProfileImg'
-                src='/assets/person/3.jpeg'
-                alt='friend'
-              />
-              <span className='rightbarOnline'></span>
-            </div>
+          {users.map((user) => (
+            <li key={user.id} className='rightbarFriend'>
+              <div className='rightbarProfileImgContainer'>
+                <img
+                  className='rightbarProfileImg'
+                  src={user.profilePicture}
+                  alt='friend'
+                />
+                <span className='rightbarOnline'></span>
+              </div>
 
-            <span className='rightbarUsername'>John Doe</span>
-          </li>
-
-          <li className='rightbarFriend'>
-            <div className='rightbarProfileImgContainer'>
-              <img
-                className='rightbarProfileImg'
-                src='/assets/person/3.jpeg'
-                alt='friend'
-              />
-              <span className='rightbarOnline'></span>
-            </div>
-
-            <span className='rightbarUsername'>John Doe</span>
-          </li>
-
-          <li className='rightbarFriend'>
-            <div className='rightbarProfileImgContainer'>
-              <img
-                className='rightbarProfileImg'
-                src='/assets/person/3.jpeg'
-                alt='friend'
-              />
-              <span className='rightbarOnline'></span>
-            </div>
-
-            <span className='rightbarUsername'>John Doe</span>
-          </li>
-
-          <li className='rightbarFriend'>
-            <div className='rightbarProfileImgContainer'>
-              <img
-                className='rightbarProfileImg'
-                src='/assets/person/3.jpeg'
-                alt='friend'
-              />
-              <span className='rightbarOnline'></span>
-            </div>
-
-            <span className='rightbarUsername'>John Doe</span>
-          </li>
+              <span className='rightbarUsername'>{user.username}</span>
+            </li>
+          ))}
         </ul>
       </div>
     </div>

@@ -66,6 +66,7 @@ const Sidebar = () => {
         <hr className='sidebarHr' />
 
         <ul className='sidebarFriendList'>
+          {/* TODO: create an CloseFriends component for below */}
           <li className='sidebarFriend'>
             <img
               className='sidebarFriendImg'

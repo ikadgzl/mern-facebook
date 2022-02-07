@@ -1,4 +1,6 @@
 .sidebar {
+  position: sticky;
+  top: 10px;
   flex: 3;
   overflow-y: scroll;
 }

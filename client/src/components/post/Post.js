@@ -1,7 +1,11 @@
 import { MoreVert } from '@material-ui/icons';
 import './post.css';
 
-const Post = () => {
+import { users } from '../../dummyData';
+
+const Post = ({ post }) => {
+  const owner = users.find((user) => user.id === post.userId);
+
   return (
     <div className='post'>
       <div className='postWrapper'>
@@ -9,11 +13,11 @@ const Post = () => {
           <div className='postTopLeft'>
             <img
               className='postProfileImg'
-              src='/assets/person/1.jpeg'
+              src={owner.profilePicture}
               alt='person'
             />
-            <span className='postUsername'>Ilker Adiguzel</span>
-            <span className='postDate'>5 mins ago</span>
+            <span className='postUsername'>{owner.username}</span>
+            <span className='postDate'>{post.date}</span>
           </div>
           <div className='postTopRight'>
             <MoreVert />
@@ -21,8 +25,8 @@ const Post = () => {
         </div>
 
         <div className='postCenter'>
-          <span className='postText'>Hey! It's my first post!</span>
-          <img className='postImg' src='/assets/post/1.jpeg' alt='post' />
+          <span className='postText'>{post.description}</span>
+          <img className='postImg' src={post.photo} alt='post' />
         </div>
 
         <div className='postBottom'>
@@ -33,10 +37,10 @@ const Post = () => {
               src='/assets/heart.png'
               alt='heart icon'
             />
-            <span className='postLikeCounter'>32 people liked it</span>
+            <span className='postLikeCounter'>{post.like}</span>
           </div>
           <div className='postBottomRight'>
-            <span className='postCommentText'>9 comments</span>
+            <span className='postCommentText'>{post.comment} comments</span>
           </div>
         </div>
       </div>
