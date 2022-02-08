@@ -2,9 +2,18 @@ import { MoreVert } from '@material-ui/icons';
 import './post.css';
 
 import { users } from '../../dummyData';
+import { useState } from 'react';
 
 const Post = ({ post }) => {
+  const [like, setLike] = useState(post.like);
+  const [isLiked, setIsLiked] = useState(false);
+
   const owner = users.find((user) => user.id === post.userId);
+
+  const handleLike = () => {
+    setLike((prevLike) => (isLiked ? prevLike - 1 : prevLike + 1));
+    setIsLiked((prevIsLiked) => !prevIsLiked);
+  };
 
   return (
     <div className='post'>
@@ -31,13 +40,21 @@ const Post = ({ post }) => {
 
         <div className='postBottom'>
           <div className='postBottomLeft'>
-            <img className='likeIcon' src='/assets/like.png' alt='like icon' />
+            <img
+              className='likeIcon'
+              src='/assets/like.png'
+              alt='like icon'
+              onClick={handleLike}
+            />
             <img
               className='likeIcon'
               src='/assets/heart.png'
               alt='heart icon'
+              onClick={handleLike}
             />
-            <span className='postLikeCounter'>{post.like}</span>
+            <span className={`postLikeCounter ${isLiked && 'liked'}`}>
+              {isLiked && 'you and'} {like} people liked it
+            </span>
           </div>
           <div className='postBottomRight'>
             <span className='postCommentText'>{post.comment} comments</span>
