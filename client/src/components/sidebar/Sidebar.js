@@ -11,6 +11,9 @@ import {
 } from '@material-ui/icons';
 import './sidebar.css';
 
+import { users } from '../../dummyData';
+import CloseFriend from './CloseFriend';
+
 const Sidebar = () => {
   return (
     <div className='sidebar'>
@@ -66,42 +69,9 @@ const Sidebar = () => {
         <hr className='sidebarHr' />
 
         <ul className='sidebarFriendList'>
-          {/* TODO: create an CloseFriends component for below */}
-          <li className='sidebarFriend'>
-            <img
-              className='sidebarFriendImg'
-              src='/assets/person/2.jpeg'
-              alt='friend'
-            />
-            <span className='sidebarFriendName'>Jane Doe</span>
-          </li>
-
-          <li className='sidebarFriend'>
-            <img
-              className='sidebarFriendImg'
-              src='/assets/person/2.jpeg'
-              alt='friend'
-            />
-            <span className='sidebarFriendName'>Jane Doe</span>
-          </li>
-
-          <li className='sidebarFriend'>
-            <img
-              className='sidebarFriendImg'
-              src='/assets/person/2.jpeg'
-              alt='friend'
-            />
-            <span className='sidebarFriendName'>Jane Doe</span>
-          </li>
-
-          <li className='sidebarFriend'>
-            <img
-              className='sidebarFriendImg'
-              src='/assets/person/2.jpeg'
-              alt='friend'
-            />
-            <span className='sidebarFriendName'>Jane Doe</span>
-          </li>
+          {users.map((user) => (
+            <CloseFriend key={user.id} user={user} />
+          ))}
         </ul>
       </div>
     </div>

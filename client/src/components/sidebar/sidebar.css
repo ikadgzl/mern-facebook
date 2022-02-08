@@ -1,6 +1,7 @@
 .sidebar {
+  height: calc(100vh - 72px);
   position: sticky;
-  top: 10px;
+  top: 72px;
   flex: 3;
   overflow-y: scroll;
 }

@@ -1,6 +1,7 @@
 import './rightbar.css';
 
 import { users } from '../../dummyData';
+import OnlineUser from './OnlineUser';
 
 const Rightbar = () => {
   return (
@@ -17,19 +18,9 @@ const Rightbar = () => {
         <h4 className='rightbarTitle'>Online Friends</h4>
 
         <ul className='rightbarFriendList'>
+          {/* todo: make user li its own component called OnlineUser */}
           {users.map((user) => (
-            <li key={user.id} className='rightbarFriend'>
-              <div className='rightbarProfileImgContainer'>
-                <img
-                  className='rightbarProfileImg'
-                  src={user.profilePicture}
-                  alt='friend'
-                />
-                <span className='rightbarOnline'></span>
-              </div>
-
-              <span className='rightbarUsername'>{user.username}</span>
-            </li>
+            <OnlineUser key={user.id} user={user} />
           ))}
         </ul>
       </div>
